@@ -8,4 +8,5 @@ export default defineConfig({
     react(),
     tailwindcss(),
   ],
+  base: './', // Permite que los assets carguen correctamente desde cualquier ruta de GH Pages
 })
