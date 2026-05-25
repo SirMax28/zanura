@@ -42,7 +42,7 @@ export default function Header() {
                 initial={{ opacity: 0, y: -10 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, ease: "easeOut" }}
-                src="/src/assets/logo_principal.webp"
+                src="/zanura/assets/logo_principal.webp"
                 alt="Zanura Logo"
                 className="h-8 object-contain"
               />

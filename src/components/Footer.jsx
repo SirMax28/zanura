@@ -11,7 +11,7 @@ export default function Footer() {
           {[...Array(20)].map((_, i) => (
             <img
               key={i}
-              src="/src/assets/isotipo_principal_gota.webp"
+              src="/zanura/assets/isotipo_principal_gota.webp"
               alt=""
               className="h-16 mx-4 inline-block drop-shadow-lg"
               style={{ filter: "brightness(0) invert(1)" }}
@@ -80,7 +80,7 @@ export default function Footer() {
 
         <div className="col-span-1 flex justify-end items-end pb-2">
           <img
-            src="/src/assets/logo_principal_en_negro.webp"
+            src="/zanura/assets/logo_principal_en_negro.webp"
             className="w-24"
             style={{ filter: "brightness(0) invert(1)" }}
             alt="Zanura"

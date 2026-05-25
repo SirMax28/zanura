@@ -8,20 +8,20 @@ export default function Home() {
   const heroOpacity = useTransform(scrollY, [0, 400], [1, 0]);
 
   const categories = [
-    { title: 'Merch', image: '/src/assets/merchandising_1_bolsa.webp' },
-    { title: 'Producto', image: '/src/assets/producto_1_botella_serum.webp' },
-    { title: 'Pack', image: '/src/assets/packaging_1.webp' }
+    { title: 'Merch', image: '/zanura/assets/merchandising_1_bolsa.webp' },
+    { title: 'Producto', image: '/zanura/assets/producto_1_botella_serum.webp' },
+    { title: 'Pack', image: '/zanura/assets/packaging_1.webp' }
   ];
 
   const products = [
-    { id: 1, name: 'SÉRUM RENOVADOR', rating: '★★★★★', price: '45€', image: '/src/assets/producto_1_botella_serum.webp' },
-    { id: 2, name: 'ACEITE CORPORAL', rating: '★★★★☆', price: '38€', image: '/src/assets/complementario_2.webp' },
-    { id: 3, name: 'PACK ESENCIAL', rating: '★★★★★', price: '80€', image: '/src/assets/packaging_1.webp' },
-    { id: 4, name: 'BOLSA TOTE', rating: '★★★★★', price: '15€', image: '/src/assets/merchandising_1_bolsa.webp' },
-    { id: 5, name: 'BÁLSAMO LABIAL', rating: '★★★★★', price: '18€', image: '/src/assets/complementario_3.webp' },
-    { id: 6, name: 'ACEITE CAPILAR', rating: '★★★★☆', price: '35€', image: '/src/assets/complementario_4.webp' },
-    { id: 7, name: 'GEL LIMPIADOR', rating: '★★★★★', price: '28€', image: '/src/assets/complementario_1_agua.webp' },
-    { id: 8, name: 'BRUMA FACIAL', rating: '★★★★★', price: '25€', image: '/src/assets/producto_1_botella_serum.webp' },
+    { id: 1, name: 'SÉRUM RENOVADOR', rating: '★★★★★', price: '45€', image: '/zanura/assets/producto_1_botella_serum.webp' },
+    { id: 2, name: 'ACEITE CORPORAL', rating: '★★★★☆', price: '38€', image: '/zanura/assets/complementario_2.webp' },
+    { id: 3, name: 'PACK ESENCIAL', rating: '★★★★★', price: '80€', image: '/zanura/assets/packaging_1.webp' },
+    { id: 4, name: 'BOLSA TOTE', rating: '★★★★★', price: '15€', image: '/zanura/assets/merchandising_1_bolsa.webp' },
+    { id: 5, name: 'BÁLSAMO LABIAL', rating: '★★★★★', price: '18€', image: '/zanura/assets/complementario_3.webp' },
+    { id: 6, name: 'ACEITE CAPILAR', rating: '★★★★☆', price: '35€', image: '/zanura/assets/complementario_4.webp' },
+    { id: 7, name: 'GEL LIMPIADOR', rating: '★★★★★', price: '28€', image: '/zanura/assets/complementario_1_agua.webp' },
+    { id: 8, name: 'BRUMA FACIAL', rating: '★★★★★', price: '25€', image: '/zanura/assets/producto_1_botella_serum.webp' },
   ];
 
   return (
@@ -91,7 +91,7 @@ export default function Home() {
           <p className="text-lg md:text-2xl font-serif text-center leading-relaxed text-gray-700 mb-12">
             "Creemos en el poder transformador de la naturaleza. Extraemos la esencia más pura para cuidar de ti, respetando el equilibrio y la simplicidad."
           </p>
-          <img src="/src/assets/isotipo_principal_gota.webp" alt="Gota Zanura" className="w-12 opacity-80" />
+          <img src="/zanura/assets/isotipo_principal_gota.webp" alt="Gota Zanura" className="w-12 opacity-80" />
         </div>
       </section>
 
