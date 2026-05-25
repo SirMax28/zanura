@@ -1,0 +1,136 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: 'Optika', "Helvetica Neue", Arial, sans-serif;
+  --font-serif: 'Eunoia', 'Times New Roman', Times, serif;
+
+  /* Colores de marca basados en la descripción minimalista/orgánica */
+  --color-zanura-blue: #0A3C7D;
+  --color-zanura-blue-light: #1653A3;
+  --color-zanura-beige: #F9F7F4;
+  --color-zanura-sand: #EBE5DF;
+  --color-zanura-black: #1A1A1A;
+  --color-zanura-white: #FFFFFF;
+}
+
+@layer base {
+  @font-face {
+    font-family: 'Optika';
+    src: url('./assets/fonts/Optika-Regular.ttf') format('truetype');
+    font-weight: 400;
+  }
+  @font-face {
+    font-family: 'Optika';
+    src: url('./assets/fonts/Optika-Medium.otf') format('opentype');
+    font-weight: 500;
+  }
+  @font-face {
+    font-family: 'Optika';
+    src: url('./assets/fonts/Optika-SemiBold.ttf') format('truetype');
+    font-weight: 600;
+  }
+  @font-face {
+    font-family: 'Optika';
+    src: url('./assets/fonts/Optika-Bold.ttf') format('truetype');
+    font-weight: 700;
+  }
+  @font-face {
+    font-family: 'Eunoia';
+    src: url('./assets/fonts/eunoia%20FREE.ttf') format('truetype');
+    font-weight: 400;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    background-color: var(--color-zanura-beige);
+    color: var(--color-zanura-black);
+    font-family: var(--font-sans);
+    line-height: normal;
+    overflow-x: hidden;
+  }
+
+  /* Accesibilidad (a11y): Indicador visual armónico al navegar por teclado (TAB) */
+  *:focus-visible {
+    outline: 2px solid var(--color-zanura-blue);
+    outline-offset: 4px;
+    border-radius: 2px;
+    transition: outline-offset 0.2s ease;
+  }
+
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+}
+
+@layer components {
+  .hero-title {
+    font-family: var(--font-serif);
+    font-size: clamp(3rem, 10vw, 7rem);
+    line-height: 0.9;
+    letter-spacing: -0.02em;
+    text-wrap: balance; /* Evita roturas bruscas de título dejándolas balanceadas */
+  }
+  
+  .section-title {
+    font-family: var(--font-serif);
+    font-size: clamp(2rem, 5vw, 4rem);
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty; /* Evita que las últimas palabras queden viudas (huérfanas) en la línea final */
+  }
+
+  .nav-link {
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    transition: color 0.3s ease;
+  }
+
+  .nav-link:hover {
+    color: var(--color-zanura-blue);
+  }
+
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem 3rem;
+    background-color: var(--color-zanura-blue);
+    color: var(--color-zanura-white);
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    border-radius: 9999px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .btn-secondary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem 3rem;
+    border: 1px solid var(--color-zanura-black);
+    color: var(--color-zanura-black);
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    border-radius: 9999px;
+    transition: all 0.3s ease;
+  }
+}
