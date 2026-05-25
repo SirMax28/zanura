@@ -5,7 +5,7 @@ import AcercaDe from './pages/AcercaDe';
 
 function App() {
   return (
-    <Router>
+    <Router basename="/zanura/">
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />
