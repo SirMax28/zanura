@@ -81,6 +81,7 @@ export default function Home() {
       <section className="w-full h-screen sticky top-0 flex flex-col items-center justify-center px-6 text-center overflow-hidden bg-[var(--color-zanura-blue)] border-b border-zanura-sand z-10">
         <ViewportVideo
           className="absolute inset-0 h-full w-full object-cover"
+          pauseAfterVh={0.65}
           src="/zanura/assets/background_princial.webm"
         />
         <div className="absolute inset-0 bg-[var(--color-zanura-blue)]/12 mix-blend-color pointer-events-none" />

@@ -1,11 +1,14 @@
 import { useEffect, useRef } from "react";
 
-export default function ViewportVideo({ className, src }) {
+export default function ViewportVideo({ className, pauseAfterVh, src }) {
   const videoRef = useRef(null);
 
   useEffect(() => {
     const video = videoRef.current;
     if (!video) return undefined;
+
+    let isIntersecting = true;
+    let animationFrame = null;
 
     const playVideo = () => {
       if (document.hidden) return;
@@ -16,34 +19,49 @@ export default function ViewportVideo({ className, src }) {
       video.pause();
     };
 
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting && entry.intersectionRatio > 0.2) {
-          playVideo();
-        } else {
-          pauseVideo();
-        }
-      },
-      { threshold: [0, 0.2, 0.6] },
-    );
+    const shouldPauseForScroll = () =>
+      typeof pauseAfterVh === "number" &&
+      window.scrollY > window.innerHeight * pauseAfterVh;
 
-    const handleVisibilityChange = () => {
-      if (document.hidden) {
+    const syncPlayback = () => {
+      if (document.hidden || !isIntersecting || shouldPauseForScroll()) {
         pauseVideo();
-      } else if (video.getBoundingClientRect().bottom > 0 && video.getBoundingClientRect().top < window.innerHeight) {
+      } else {
         playVideo();
       }
     };
 
+    const requestSync = () => {
+      if (animationFrame) return;
+      animationFrame = window.requestAnimationFrame(() => {
+        animationFrame = null;
+        syncPlayback();
+      });
+    };
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        isIntersecting = entry.isIntersecting && entry.intersectionRatio > 0.2;
+        syncPlayback();
+      },
+      { threshold: [0, 0.2, 0.6] },
+    );
+
     observer.observe(video);
-    document.addEventListener("visibilitychange", handleVisibilityChange);
+    document.addEventListener("visibilitychange", syncPlayback);
+    window.addEventListener("scroll", requestSync, { passive: true });
+    syncPlayback();
 
     return () => {
+      if (animationFrame) {
+        window.cancelAnimationFrame(animationFrame);
+      }
       observer.disconnect();
-      document.removeEventListener("visibilitychange", handleVisibilityChange);
+      document.removeEventListener("visibilitychange", syncPlayback);
+      window.removeEventListener("scroll", requestSync);
       pauseVideo();
     };
-  }, []);
+  }, [pauseAfterVh]);
 
   return (
     <video
