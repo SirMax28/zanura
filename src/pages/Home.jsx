@@ -111,25 +111,35 @@ export default function Home() {
       </section>
 
       {/* Categories */}
-      <section className="w-full h-screen sticky top-0 flex flex-col justify-center px-6 bg-[var(--color-zanura-sand)] z-20 shadow-2xl shadow-black/10">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-12 max-w-5xl mx-auto w-full pt-20">
+      <section className="w-full h-screen sticky top-0 flex flex-col justify-center px-6 bg-[var(--color-zanura-sand)] z-20 shadow-2xl shadow-black/10 overflow-hidden">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-12 max-w-[90rem] mx-auto w-full pt-10 group/list">
           {categories.map((cat, i) => (
             <motion.div
               key={i}
               initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-100px" }}
-              transition={{ duration: 0.6, delay: i * 0.2 }}
-              className="flex flex-col items-center group cursor-pointer"
+              transition={{ duration: 0.8, delay: i * 0.2 }}
+              className="flex flex-col items-center group/card cursor-pointer transition-all duration-700 ease-[cubic-bezier(0.25,0.1,0.25,1)] hover:!blur-none hover:!opacity-100 group-hover/list:blur-[3px] group-hover/list:opacity-50 relative z-0 hover:!z-20 hover:-translate-y-2"
             >
-              <div className="w-full pt-[100%] md:pt-[120%] relative mb-6 overflow-hidden bg-[var(--color-zanura-sand)]">
+              <div className="w-full pt-[100%] md:pt-[130%] relative mb-8 overflow-hidden bg-[var(--color-zanura-sand)] shadow-md transition-all duration-700 group-hover/card:shadow-2xl z-10">
+                {/* Expansión extrema de la imagen (-top-1) para anular definitivamente el subpixel de navegador y las líneas blancas */}
                 <img
                   src={cat.image}
                   alt={cat.title}
-                  className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                  className="absolute -top-[2px] -left-[2px] w-[calc(100%+4px)] h-[calc(100%+4px)] max-w-none object-cover transition-transform duration-[2s] ease-[cubic-bezier(0.25,0.1,0.25,1)] group-hover/card:scale-110 pointer-events-none"
                 />
+
+                {/* Efecto de Refracción / Prisma de Cristal Suave */}
+                <div className="absolute inset-0 z-20 pointer-events-none transform -translate-x-[150%] -skew-x-12 group-hover/card:translate-x-[200%] transition-transform duration-[2s] ease-in-out w-[150%]">
+                  <div className="w-1/3 h-full bg-gradient-to-r from-transparent via-white/30 to-transparent blur-[4px]"></div>
+                </div>
+
+                {/* Resplandor Azul sutil exclusivo en los bordes internos (Viñeta) */}
+                <div className="absolute inset-0 z-10 pointer-events-none transition-all duration-700 opacity-0 group-hover/card:opacity-100 shadow-[inset_0_0_80px_rgba(10,60,125,0.5)]"></div>
               </div>
-              <button className="px-6 py-2 bg-[var(--color-zanura-blue)] text-white text-xs tracking-widest uppercase rounded-full group-hover:bg-[#111] transition-colors duration-300">
+
+              <button className="px-8 py-3 bg-[var(--color-zanura-blue)] text-white text-xs tracking-[0.2em] font-medium uppercase rounded-full group-hover/card:bg-[#111] transition-all duration-500 transform group-hover/card:scale-110 group-hover/card:shadow-lg">
                 {cat.title}
               </button>
             </motion.div>
@@ -164,42 +174,42 @@ export default function Home() {
         <div className="container mx-auto px-6">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-x-6 gap-y-16">
             {products.map((product, i) => (
-            <motion.div
-              key={product.id}
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: (i % 4) * 0.1 }}
-              className="group cursor-pointer flex flex-col"
-            >
-              <div className="w-full pt-[125%] relative bg-[var(--color-zanura-sand)] mb-4 overflow-hidden">
-                <img
-                  src={product.image}
-                  alt={product.name}
-                  className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                />
+              <motion.div
+                key={product.id}
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: (i % 4) * 0.1 }}
+                className="group cursor-pointer flex flex-col"
+              >
+                <div className="w-full pt-[125%] relative bg-[var(--color-zanura-sand)] mb-4 overflow-hidden">
+                  <img
+                    src={product.image}
+                    alt={product.name}
+                    className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                  />
 
-                {/* Profesionalismo: Botón Añadir Rápido invisible por defecto */}
-                <div className="absolute bottom-0 left-0 w-full p-4 transform translate-y-full opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500 ease-out z-20">
-                  <button className="w-full bg-zanura-beige text-zanura-black py-3 text-xs tracking-widest font-semibold uppercase hover:bg-zanura-blue hover:text-white transition-colors duration-300">
-                    Añadir - {product.price}
-                  </button>
+                  {/* Profesionalismo: Botón Añadir Rápido invisible por defecto */}
+                  <div className="absolute bottom-0 left-0 w-full p-4 transform translate-y-full opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500 ease-out z-20">
+                    <button className="w-full bg-zanura-beige text-zanura-black py-3 text-xs tracking-widest font-semibold uppercase hover:bg-zanura-blue hover:text-white transition-colors duration-300">
+                      Añadir - {product.price}
+                    </button>
+                  </div>
+                  {/* Degradado oscuro para legibilidad si la imagen es clara */}
+                  <div className="absolute bottom-0 left-0 w-full h-1/2 bg-gradient-to-t from-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
                 </div>
-                {/* Degradado oscuro para legibilidad si la imagen es clara */}
-                <div className="absolute bottom-0 left-0 w-full h-1/2 bg-gradient-to-t from-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
-              </div>
-              <div className="flex flex-col space-y-1 px-1">
-                <span className="text-xs uppercase tracking-widest font-semibold">
-                  {product.name}
-                </span>
-                <span className="text-[10px] text-gray-500 tracking-widest">
-                  {product.rating}
-                </span>
-                <span className="text-sm font-serif">{product.price}</span>
-              </div>
-            </motion.div>
-          ))}
-        </div>
+                <div className="flex flex-col space-y-1 px-1">
+                  <span className="text-xs uppercase tracking-widest font-semibold">
+                    {product.name}
+                  </span>
+                  <span className="text-[10px] text-gray-500 tracking-widest">
+                    {product.rating}
+                  </span>
+                  <span className="text-sm font-serif">{product.price}</span>
+                </div>
+              </motion.div>
+            ))}
+          </div>
         </div>
       </section>
     </div>
