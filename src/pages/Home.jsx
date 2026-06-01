@@ -76,13 +76,13 @@ export default function Home() {
   ];
 
   return (
-    <div className="w-full flex justify-center items-center flex-col pt-24 font-sans text-zanura-black">
+    <div className="w-full relative font-sans text-zanura-black bg-[var(--color-zanura-beige)]">
       {/* Hero Section */}
-      <section className="w-full min-h-[90vh] flex flex-col items-center justify-center relative px-6 text-center overflow-hidden">
+      <section className="w-full h-screen sticky top-0 flex flex-col items-center justify-center px-6 text-center overflow-hidden bg-[var(--color-zanura-beige)] border-b border-zanura-sand z-10">
         {/* Usamos el motion.div para el scroll vinculado al Parallax */}
         <motion.div
           style={{ y: heroY, opacity: heroOpacity }}
-          className="flex flex-col items-center z-10"
+          className="flex flex-col items-center z-10 pt-20"
         >
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
@@ -111,8 +111,8 @@ export default function Home() {
       </section>
 
       {/* Categories */}
-      <section className="w-full py-20 px-6 container mx-auto bg-zanura-beige relative z-20">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-12 max-w-5xl mx-auto">
+      <section className="w-full h-screen sticky top-0 flex flex-col justify-center px-6 bg-[var(--color-zanura-sand)] z-20 shadow-2xl shadow-black/10">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-12 max-w-5xl mx-auto w-full pt-20">
           {categories.map((cat, i) => (
             <motion.div
               key={i}
@@ -122,7 +122,7 @@ export default function Home() {
               transition={{ duration: 0.6, delay: i * 0.2 }}
               className="flex flex-col items-center group cursor-pointer"
             >
-              <div className="w-full pt-[100%] relative mb-6 overflow-hidden bg-[var(--color-zanura-sand)]">
+              <div className="w-full pt-[100%] md:pt-[120%] relative mb-6 overflow-hidden bg-[var(--color-zanura-sand)]">
                 <img
                   src={cat.image}
                   alt={cat.title}
@@ -138,12 +138,12 @@ export default function Home() {
       </section>
 
       {/* Brand History Breve */}
-      <section className="w-full py-24 bg-white/50 text-center relative z-20">
-        <div className="container mx-auto px-6 max-w-3xl flex flex-col items-center">
+      <section className="w-full h-screen sticky top-0 flex flex-col justify-center bg-white text-center z-30 shadow-2xl shadow-black/10">
+        <div className="container mx-auto px-6 max-w-3xl flex flex-col items-center pt-20">
           <h2 className="section-title mb-8 text-[var(--color-zanura-blue)] text-sm md:text-base tracking-[0.2em] font-sans font-medium uppercase">
             Estás en Zanura
           </h2>
-          <p className="text-lg md:text-2xl font-serif text-center leading-relaxed text-gray-700 mb-12">
+          <p className="text-lg md:text-3xl font-serif text-center leading-relaxed text-gray-700 mb-12">
             "Creemos en el poder transformador de la naturaleza. Extraemos la
             esencia más pura para cuidar de ti, respetando el equilibrio y la
             simplicidad."
@@ -151,7 +151,7 @@ export default function Home() {
           <img
             src="/zanura/assets/isotipo_principal_gota.webp"
             alt="Gota Zanura"
-            className="w-12"
+            className="w-12 opacity-80"
           />
         </div>
       </section>
@@ -159,10 +159,11 @@ export default function Home() {
       {/* Product Grid */}
       <section
         id="productos"
-        className="w-full py-24 container mx-auto px-6 scroll-mt-20 relative z-20"
+        className="w-full min-h-screen relative z-40 bg-[var(--color-zanura-beige)] border-t border-[var(--color-zanura-sand)] shadow-[0_-20px_40px_rgba(0,0,0,0.05)] pt-32 pb-24"
       >
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-x-6 gap-y-16">
-          {products.map((product, i) => (
+        <div className="container mx-auto px-6">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-x-6 gap-y-16">
+            {products.map((product, i) => (
             <motion.div
               key={product.id}
               initial={{ opacity: 0 }}
@@ -198,6 +199,7 @@ export default function Home() {
               </div>
             </motion.div>
           ))}
+        </div>
         </div>
       </section>
     </div>
