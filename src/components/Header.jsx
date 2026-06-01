@@ -14,7 +14,7 @@ export default function Header() {
         <div className="bg-zanura-blue text-zanura-white overflow-hidden py-1">
           <Marquee speed={30}>
             <span className="mx-8 text-xs font-semibold tracking-widest uppercase">
-              COMPRA AHORA ➔ ENVÍO GRATUITO EN PEDIDOS SUPERIORES A 50€ ➔ TÚ MEJOR VERSIÓN ➔
+              COMPRA AHORA ➔ ENVÍO GRATUITO EN PEDIDOS SUPERIORES A 50€ ➔ TU VERDADERA ESENCIA ➔
             </span>
           </Marquee>
         </div>
@@ -36,15 +36,15 @@ export default function Header() {
             <Link to="/acerca-de" className="nav-link">Acerca De</Link>
           </div>
 
-          <div className="w-1/3 flex justify-center">
+          <div className="w-1/3 flex justify-center items-center mt-6">
             <Link to="/">
               <motion.img
                 initial={{ opacity: 0, y: -10 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, ease: "easeOut" }}
-                src="/zanura/assets/logo_principal.webp"
+                src="/zanura/assets/logo_secundario_pequeño.webp"
                 alt="Zanura Logo"
-                className="h-8 object-contain"
+                className="h-13 object-contain"
               />
             </Link>
           </div>

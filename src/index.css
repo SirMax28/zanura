@@ -2,7 +2,7 @@
 
 @theme {
   --font-sans: 'Optika', "Helvetica Neue", Arial, sans-serif;
-  --font-serif: 'Eunoia', 'Times New Roman', Times, serif;
+  --font-serif: 'Cresinta', 'Times New Roman', Times, serif;
 
   /* Colores de marca basados en la descripción minimalista/orgánica */
   --color-zanura-blue: #0A3C7D;
@@ -35,8 +35,8 @@
     font-weight: 700;
   }
   @font-face {
-    font-family: 'Eunoia';
-    src: url('./assets/fonts/eunoia%20FREE.ttf') format('truetype');
+    font-family: 'Cresinta';
+    src: url('./assets/fonts/Cresinta-Regular.otf') format('opentype');
     font-weight: 400;
   }
 
