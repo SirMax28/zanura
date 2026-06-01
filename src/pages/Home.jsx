@@ -1,5 +1,5 @@
-import React from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
+import ViewportVideo from "../components/ViewportVideo";
 
 export default function Home() {
   const { scrollY } = useScroll();
@@ -78,7 +78,13 @@ export default function Home() {
   return (
     <div className="w-full relative font-sans text-zanura-black bg-[var(--color-zanura-beige)]">
       {/* Hero Section */}
-      <section className="w-full h-screen sticky top-0 flex flex-col items-center justify-center px-6 text-center overflow-hidden bg-[var(--color-zanura-beige)] border-b border-zanura-sand z-10">
+      <section className="w-full h-screen sticky top-0 flex flex-col items-center justify-center px-6 text-center overflow-hidden bg-[var(--color-zanura-blue)] border-b border-zanura-sand z-10">
+        <ViewportVideo
+          className="absolute inset-0 h-full w-full object-cover"
+          src="/zanura/assets/background_princial.webm"
+        />
+        <div className="absolute inset-0 bg-[var(--color-zanura-blue)]/12 mix-blend-color pointer-events-none" />
+        <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(10,60,125,0.18),rgba(10,60,125,0.04)_42%,rgba(10,60,125,0.24))] pointer-events-none" />
         {/* Usamos el motion.div para el scroll vinculado al Parallax */}
         <motion.div
           style={{ y: heroY, opacity: heroOpacity }}
@@ -88,10 +94,10 @@ export default function Home() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="hero-title text-zanura-blue flex flex-col mb-12"
+            className="hero-title flex flex-col mb-12 text-[var(--color-zanura-beige)] drop-shadow-[0_10px_34px_rgba(4,18,37,0.35)]"
           >
-            <span>ORO LÍQUIDO</span>
-            <span className="italic">TU VERDADERA ESENCIA</span>
+            <span>TU PIEL EN</span>
+            <span className="italic">SU ESTADO MÁS PURO</span>
           </motion.h1>
 
           <motion.button
@@ -99,7 +105,7 @@ export default function Home() {
             animate={{ opacity: 1 }}
             transition={{ duration: 0.8, delay: 0.6 }}
             className="btn-primary"
-            onClick={(e) => {
+            onClick={() => {
               document
                 .getElementById("productos")
                 ?.scrollIntoView({ behavior: "smooth" });
