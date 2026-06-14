@@ -1,12 +1,20 @@
-import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import Marquee from "./Marquee";
 import { ShoppingBag, Search } from "lucide-react";
 import { motion } from "framer-motion";
 import CartDrawer from "./CartDrawer";
 
-export default function Header() {
-  const [isCartOpen, setIsCartOpen] = useState(false);
+export default function Header({
+  cartItems,
+  isCartOpen,
+  onCartClose,
+  onCartOpen,
+  onQuantityChange,
+}) {
+  const cartCount = cartItems.reduce(
+    (total, item) => total + item.quantity,
+    0,
+  );
 
   return (
     <>
@@ -14,26 +22,31 @@ export default function Header() {
         <div className="bg-zanura-blue text-zanura-white overflow-hidden py-1">
           <Marquee speed={30}>
             <span className="mx-8 text-xs font-semibold tracking-widest uppercase">
-              COMPRA AHORA ➔ ENVÍO GRATUITO EN PEDIDOS SUPERIORES A 50€ ➔ TU VERDADERA ESENCIA ➔
+              COMPRA AHORA ➔ ENVÍO GRATUITO EN PEDIDOS SUPERIORES A 50€ ➔ TU
+              VERDADERA ESENCIA ➔
             </span>
           </Marquee>
         </div>
 
         <div className="container mx-auto px-6 h-20 flex items-center justify-between">
           <div className="flex items-center space-x-8 w-1/3">
-            <Link 
-              to="/#productos" 
+            <Link
+              to="/#productos"
               className="nav-link"
               onClick={(e) => {
-                if (window.location.pathname === '/') {
+                if (window.location.pathname === "/") {
                   e.preventDefault();
-                  document.getElementById('productos')?.scrollIntoView({ behavior: 'smooth' });
+                  document
+                    .getElementById("productos")
+                    ?.scrollIntoView({ behavior: "smooth" });
                 }
               }}
             >
               Tienda
             </Link>
-            <Link to="/acerca-de" className="nav-link">Acerca De</Link>
+            <Link to="/acerca-de" className="nav-link">
+              Acerca De
+            </Link>
           </div>
 
           <div className="w-1/3 flex justify-center items-center mt-6">
@@ -53,18 +66,29 @@ export default function Header() {
             <button className="text-zanura-black hover:text-zanura-blue transition-colors">
               <Search size={20} strokeWidth={1.5} />
             </button>
-            <button 
+            <button
               className="text-zanura-black hover:text-zanura-blue transition-colors flex items-center space-x-2 group"
-              onClick={() => setIsCartOpen(true)}
+              onClick={onCartOpen}
             >
-              <span className="nav-link hidden md:block group-hover:text-zanura-blue">Carrito ({0})</span>
-              <ShoppingBag size={20} strokeWidth={1.5} className="group-hover:scale-110 transition-transform" />
+              <span className="nav-link hidden md:block group-hover:text-zanura-blue">
+                Carrito ({cartCount})
+              </span>
+              <ShoppingBag
+                size={20}
+                strokeWidth={1.5}
+                className="group-hover:scale-110 transition-transform"
+              />
             </button>
           </div>
         </div>
       </header>
 
-      <CartDrawer isOpen={isCartOpen} onClose={() => setIsCartOpen(false)} />
+      <CartDrawer
+        cartItems={cartItems}
+        isOpen={isCartOpen}
+        onClose={onCartClose}
+        onQuantityChange={onQuantityChange}
+      />
     </>
   );
 }

@@ -1,15 +1,45 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useLocation, useOutlet } from "react-router-dom";
 import Header from "./Header";
 import Footer from "./Footer";
 import Lenis from "lenis";
 import { AnimatePresence, motion } from "framer-motion";
+import { CartProvider } from "../context/CartContext";
 
 export default function Layout() {
   const { pathname } = useLocation();
   const outlet = useOutlet(); // Permite "congelar" la vista previa mientras ocurre el fade-out
   const requestRef = useRef();
   const lenisRef = useRef();
+  const [cartItems, setCartItems] = useState([]);
+  const [isCartOpen, setIsCartOpen] = useState(false);
+
+  const addToCart = (product) => {
+    setCartItems((currentItems) => {
+      const existingItem = currentItems.find((item) => item.id === product.id);
+
+      if (existingItem) {
+        return currentItems.map((item) =>
+          item.id === product.id
+            ? { ...item, quantity: item.quantity + 1 }
+            : item,
+        );
+      }
+
+      return [...currentItems, { ...product, quantity: 1 }];
+    });
+    setIsCartOpen(true);
+  };
+
+  const updateCartQuantity = (productId, quantity) => {
+    setCartItems((currentItems) =>
+      quantity <= 0
+        ? currentItems.filter((item) => item.id !== productId)
+        : currentItems.map((item) =>
+            item.id === productId ? { ...item, quantity } : item,
+          ),
+    );
+  };
 
   useEffect(() => {
     // Lenis Smooth Scroll Init
@@ -40,8 +70,15 @@ export default function Layout() {
   }, []);
 
   return (
-    <div className="flex flex-col min-h-screen">
-      <Header />
+    <CartProvider value={{ addToCart }}>
+      <div className="flex flex-col min-h-screen">
+      <Header
+        cartItems={cartItems}
+        isCartOpen={isCartOpen}
+        onCartClose={() => setIsCartOpen(false)}
+        onCartOpen={() => setIsCartOpen(true)}
+        onQuantityChange={updateCartQuantity}
+      />
       <main className="flex-grow relative">
         <AnimatePresence 
           mode="wait" 
@@ -63,6 +100,7 @@ export default function Layout() {
         </AnimatePresence>
       </main>
       <Footer />
-    </div>
+      </div>
+    </CartProvider>
   );
 }

@@ -1,42 +1,42 @@
 @import "tailwindcss";
 
 @theme {
-  --font-sans: 'Optika', "Helvetica Neue", Arial, sans-serif;
-  --font-serif: 'Cresinta', 'Times New Roman', Times, serif;
+  --font-sans: "Optika", "Helvetica Neue", Arial, sans-serif;
+  --font-serif: "Cresinta", "Times New Roman", Times, serif;
 
   /* Colores de marca basados en la descripción minimalista/orgánica */
-  --color-zanura-blue: #0A3C7D;
-  --color-zanura-blue-light: #1653A3;
-  --color-zanura-beige: #F9F7F4;
-  --color-zanura-sand: #EBE5DF;
-  --color-zanura-black: #1A1A1A;
-  --color-zanura-white: #FFFFFF;
+  --color-zanura-blue: #0a3c7d;
+  --color-zanura-blue-light: #1653a3;
+  --color-zanura-beige: #f9f7f4;
+  --color-zanura-sand: #ebe5df;
+  --color-zanura-black: #1a1a1a;
+  --color-zanura-white: #ffffff;
 }
 
 @layer base {
   @font-face {
-    font-family: 'Optika';
-    src: url('./assets/fonts/Optika-Regular.ttf') format('truetype');
+    font-family: "Optika";
+    src: url("./assets/fonts/Optika-Regular.ttf") format("truetype");
     font-weight: 400;
   }
   @font-face {
-    font-family: 'Optika';
-    src: url('./assets/fonts/Optika-Medium.otf') format('opentype');
+    font-family: "Optika";
+    src: url("./assets/fonts/Optika-Medium.otf") format("opentype");
     font-weight: 500;
   }
   @font-face {
-    font-family: 'Optika';
-    src: url('./assets/fonts/Optika-SemiBold.ttf') format('truetype');
+    font-family: "Optika";
+    src: url("./assets/fonts/Optika-SemiBold.ttf") format("truetype");
     font-weight: 600;
   }
   @font-face {
-    font-family: 'Optika';
-    src: url('./assets/fonts/Optika-Bold.ttf') format('truetype');
+    font-family: "Optika";
+    src: url("./assets/fonts/Optika-Bold.ttf") format("truetype");
     font-weight: 700;
   }
   @font-face {
-    font-family: 'Cresinta';
-    src: url('./assets/fonts/Cresinta-Regular.otf') format('opentype');
+    font-family: "Cresinta";
+    src: url("./assets/fonts/Cresinta-Regular.otf") format("opentype");
     font-weight: 400;
   }
 
@@ -79,7 +79,7 @@
     letter-spacing: -0.02em;
     text-wrap: balance; /* Evita roturas bruscas de título dejándolas balanceadas */
   }
-  
+
   .section-title {
     font-family: var(--font-serif);
     font-size: clamp(2rem, 5vw, 4rem);
@@ -118,7 +118,7 @@
     border-radius: 9999px;
     transition: background-color 0.3s ease;
   }
-  
+
   .btn-secondary {
     display: inline-flex;
     align-items: center;
